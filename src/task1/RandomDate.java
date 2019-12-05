@@ -31,13 +31,11 @@ public class RandomDate {
                 .current()
                 .nextLong(startMillis, endMillis);
         return new Date(randomMillisSinceEpoch);
-
     }
 
-    public static void main(String[] args) {
-
+    public static String randomDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = randDate();
-        System.out.println(dateFormat.format(date));
+        return dateFormat.format(date);
     }
 }
