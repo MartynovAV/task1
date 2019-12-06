@@ -8,10 +8,4 @@ public class Operation {
         return Math.round(sum * 100.0) / 100.0;
     }
 
-    public static int operationNumber(int quantity){
-
-    return 1;
-    }
-
-
 }

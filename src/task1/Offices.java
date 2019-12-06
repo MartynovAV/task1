@@ -8,10 +8,10 @@ import java.util.Scanner;
 
 public class Offices {
 
-    public static List <Integer> getOfficeList(){
+    public static List <Integer> getOfficeList(String officesFileName){
             List <Integer> officeList=new ArrayList<>();
             //add delimeter to file path
-            String officesFileName="offices.txt";
+
             String officesFilePath="C:\\Users\\caema\\IdeaProjects\\gazprombank\\"+officesFileName;
             File file = new File(officesFilePath);
 
@@ -31,8 +31,7 @@ public class Offices {
             return officeList;
         }
 
-        public static int getOfficeNumber(){
-            List <Integer> list=getOfficeList();
+        public static int getOfficeNumber(List<Integer> list){
             int quantity=list.size();
             //Random index
             int index= (int)(Math.random()*quantity);
