@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomDate {
 
-    public static Date randDate () {
+    public static long [] startEndTimeMillis () {
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -16,26 +16,25 @@ public class RandomDate {
         int yearPrev=calendar.get(Calendar.YEAR)-1;
 
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, yearPrev);
-        cal.set(Calendar.DAY_OF_YEAR, 1);
+        cal.set(yearPrev,0,1,0,0,0);
         Date start = cal.getTime();
-
-        cal.set(Calendar.YEAR, yearPrev);
-        cal.set(Calendar.MONTH, 11); // 11 = december
-        cal.set(Calendar.DAY_OF_MONTH, 31); // new years eve
+        cal.set(yearPrev,11,31,24,0,0);
         Date end = cal.getTime();
 
         long startMillis = start.getTime();
         long endMillis = end.getTime();
+        long [] startEndTimeMillis ={startMillis,endMillis};
+        return startEndTimeMillis;
+    }
+
+    public static String randomDateTime(long [] startEndTime) {
+        long startMillis=startEndTime[0];
+        long endMillis=startEndTime[1];
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         long randomMillisSinceEpoch = ThreadLocalRandom
                 .current()
                 .nextLong(startMillis, endMillis);
-        return new Date(randomMillisSinceEpoch);
-    }
-
-    public static String randomDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = randDate();
+        Date date = new Date(randomMillisSinceEpoch);
         return dateFormat.format(date);
     }
 }
