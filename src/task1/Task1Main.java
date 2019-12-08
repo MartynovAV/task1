@@ -29,10 +29,10 @@ public class Task1Main {
 
         // Start and end time in millis
         long [] startEndTime=RandomDate.startEndTimeMillis();
+        String separator= File.separator;
 
         for (int i = 0; i <numberOfOutFiles; i++) {
             outFile[i] = args[2 + i];
-            String separator= File.separator;
             filePath[i]="C:"+separator+"task1"+separator+outFile[i];
             try {
                 FileWriter writer = new FileWriter(filePath[i]);
